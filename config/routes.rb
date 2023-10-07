@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace:api do
+    devise_for :users
     resources :motors, only: [:index, :show, :create, :destroy]
     resources :users, only: [:index, :show, :create, :destroy] do
       resources :reservations, only: [:index, :show, :create, :update, :destroy]

@@ -1,6 +1,6 @@
 # Seed data for User table
-user1 = User.create(name: 'User 1',role:'admin' )
-user2 = User.create(name: 'User 2', role:'admin')
+user1 = User.create(name: 'User 1',role:'admin',email:'user1@gmail.com', password:'123456')
+user2 = User.create(name: 'User 2',role:'admin',email:'user2@gmail.com', password:'123456')
 
 # Seed data for StoreLocation table
 location1 = StoreLocation.create(city_name: 'Lisbon')

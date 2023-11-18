@@ -83,7 +83,8 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-  database: motorhub_backend_production
-  username: motorhub_backend
-  password: <%= ENV["MOTORHUB_BACKEND_DATABASE_PASSWORD"] %>
+  database: <%= ENV['PGDATABASE'] %>
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
+  host: <%= ENV['PGHOST'] %>
+  port: <%= ENV['PGPORT'] %>

@@ -41,3 +41,4 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 
+# Use SSL by specifying the SSL key and certificate paths

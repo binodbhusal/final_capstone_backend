@@ -242,6 +242,9 @@ GEM
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     stringio (3.0.8)
+    swagger-docs (0.2.9)
+      activesupport (>= 3)
+      rails (>= 3)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -282,6 +285,7 @@ DEPENDENCIES
   rspec-rails
   rswag
   sprockets (~> 4.0)
+  swagger-docs
   tzinfo-data
   will_paginate
 

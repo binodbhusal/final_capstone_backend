@@ -181,8 +181,32 @@ paths:
               - email
               - password
               - password_confirmation
+  "/users/sign_in":
+    post:
+      summary: Logs in a user and returns a JWT token
+      tags:
+      - User Sessions
+      parameters: []
+      responses:
+        '200':
+          description: User signed in successfully
+        '401':
+          description: Invalid email or password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000

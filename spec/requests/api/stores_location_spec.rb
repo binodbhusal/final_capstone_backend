@@ -45,6 +45,5 @@ describe 'Store Locations API' do
         run_test!
       end
     end
-    
   end
 end

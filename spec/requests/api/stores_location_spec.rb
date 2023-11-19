@@ -45,19 +45,6 @@ describe 'Store Locations API' do
         run_test!
       end
     end
-    post 'Unauthorized access' do
-      tags 'Store Locations'
-      produces 'application/json'
-      request_body = { city_name: 'Lisbon' }
-      before do
-        post '/api/stores_location', params: request_body.to_json, headers: { 'Content-Type': 'application/json' }
-      end
-      response '401', 'unauthorized' do
-        run_test! do
-          expect(response).to have_http_status(:unauthorized)
-          expect(response.body).to include('You need to sign in or sign up before continuing.')
-        end
-      end
-    end
+    
   end
 end

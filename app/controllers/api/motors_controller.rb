@@ -1,5 +1,6 @@
 class Api::MotorsController < ApplicationController
   before_action :set_motor, only: %i[show update destroy]
+  before_action :authenticate_user!
 
   # GET /motors
   def index

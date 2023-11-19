@@ -1,4 +1,5 @@
 class Api::StoresLocationController < ApplicationController
+  before_action :authenticate_user!
   # GET /api/stores_location
   def index
     @locations = StoreLocation.all

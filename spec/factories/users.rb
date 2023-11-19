@@ -7,5 +7,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password' }
     password_confirmation { 'password' }
+    jti { Faker::Alphanumeric.alpha(number: 10) }
   end
 end

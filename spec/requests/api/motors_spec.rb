@@ -2,6 +2,10 @@
 require 'swagger_helper'
 
 RSpec.describe 'API Motors', type: :request do
+  let(:user) { create(:user) }
+  before do
+    sign_in user
+  end
   path '/api/motors' do
     before(:all) do
       @user = create(:user) # Create a user using the factory

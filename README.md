@@ -11,15 +11,17 @@
 
 - [📖 About the Project](#about-project)
   - [Schema](#ER-diagram)
+  - [API Documentation](#api-documentation-)
   - [🛠 Built With ](#-built-with-)
   - [Tech Stack ](#tech-stack-)
   - [Key Features ](#key-features-)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started ](#-getting-started-)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-  - [Run Tests](#run-tests)
-  - [👥 Authors ](#-authors-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+- [👥 Authors ](#-authors-)
 - [🔭 Future Features:](#-future-features)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -35,19 +37,24 @@ The Motorhub - Online Motor Reservation System is a web application designed to 
 <!-- ER diagram"-->
 
 # Database Schema <a name="ER-diagram"></a>
+#### Link to [ER-diagram](https://drawsql.app/teams/binod-1/diagrams/motorhub-final-capstone-project)
 
 <div align="center">
  <img src="https://github.com/binodbhusal/final_capstone_backend/blob/dev/app/ER_diagram/drawSQL-motorhub-final-capstone-project-export-2023-10-11.png?raw=true" width="600"  height="auto" />
   <br/>
 </div>
 
-#### Link to [Frontend](https://github.com/binodbhusal/final_capstone_frontend)
-#### Link to [API Documentation](Comming soon)
+#### Link to [Frontend](https://github.com/binodbhusal/motorhub_frontend.git)
+#### Link to [API Documentation](https://motorhubbackend-production.up.railway.app/api-docs/index.html)
+
+### API URL 
+You can use this URL address to consump data from our API using [localy](localhost:3000/) or using the URL provided by railway [https://motorhubbackend-production.up.railway.app](https://motorhubbackend-production.up.railway.app)
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
+- Ruby
+- PostgreSQL
 <details>
   <summary>Framework</summary>
   <ul>
@@ -59,24 +66,18 @@ The Motorhub - Online Motor Reservation System is a web application designed to 
 
 ### Key Features <a name="key-features"></a>
 
-1. User Authentication: The system allows users to create accounts and log in
+1. User Authentication: The system allows users to create accounts and log in.
 2. Motors Listings: Motors providers can list their available motors. Each listing includes details such as the brand, model, manufacturer, price, description, and location.
-3. Reservation Management: Users can view available motors at different locations and make reservations
-4. Add and delete motors in including location
+3. Reservation Management: Users can view available motors at different locations and make reservations.
+4. Add and delete motors in including location.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Here's the link to deployed project:
-> Click on this [Coming Soon](#) to view the live-demo of project
-
-- []()
+ Click on this [Motorhub Live Demo](https://motorhub.netlify.app/) to view the live-demo of project. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
- <img src="https://github.com/binodbhusal/final_capstone_backend/blob/dev/app/ER_diagram/kanban_screenshot.jpg" width="600"  height="auto" />
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,45 +85,72 @@ The Motorhub - Online Motor Reservation System is a web application designed to 
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
+Follow these steps in order to run ruby code.
+
 ### Prerequisites
 
-In order to run this project you need:
-
-- Have Git installed.
-- Have Ruby installed. 
-- Have Ruby on Rails installed
-- Create a local directory that you want to clone the repository.
-- Open the command prompt in the created directory.
-- On the terminal run this command git clone https://github.com/binodbhusal/final_capstone_backend.git
+First, you need to ensure that you have Rails and Ruby installed on your computer.
 
 ### Setup
 
-Clone this repository to your desired folder:
+It varies depending on your operating system so here are some links to help you install it on [Windows](https://gorails.com/setup/windows/10) and on [Ubuntu](https://www.ruby-lang.org/en/documentation/installation/#apt).
+
+For MacOS run the following commands
 
 ```sh
-git clone https://github.com/binodbhusal/final_capstone_backend.git
+  brew install rbenv ruby-build
+  # Add rbenv to bash so that it loads every time you open a terminal
+  echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+  source ~/.bash_profile
+
+  # Install Ruby
+  rbenv install 3.2.2 
+  rbenv global 3.2.2 
+  ruby -v
 ```
 
-```sh
-cd final_capstone_backend
+This example shows how to install Ruby 3.2.2, you can check to see if there is a newer version [here](https://www.ruby-lang.org/en/downloads/releases/). Iy is also assumed that you have [homebrew](https://brew.sh/) already installed on your Mac.
+
+### Usage
+
+Before running the project, make sure you have Ruby and Rails installed on your system. You can refer to the [official Ruby on Rails installation guide](https://guides.rubyonrails.org/getting_started.html) for instructions on how to install them.
+Once you have ruby installed, [clone this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+First navigate to the project directory in your terminal:
+```
+  cd your-project-directory
 ```
 
-```sh
-bundle install
+Then install the required gems by running in the terminal:
+```
+  bundle install
+```
+Create the database by running:
+```
+  rails db:create
+```
+Run the database migrations to set up the database schema:
+```
+  rails db:migrate
+```
+Optionally, you can seed the database with initial data (if the project provides seed data) by running:
+```
+  rails db:seed
+```
+Start the Rails server:
+```
+  rails server
+```
+To see all API Endpoints available, in your preferred browser, navigate to:
+```
+  https://motorhubbackend-production.up.railway.app/api-docs/index.html
 ```
 
-```sh
-bundle exec rails db:create db:migrate db:seed
+### Run tests
+To run tests, run the following command in the terminal:
 ```
-
-```sh
-rails s
+  rspec
 ```
-
-### Run Tests
-
-N/A
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
@@ -153,13 +181,13 @@ N/A
 
 # 🔭 Future Features:
 
-- Add online payment  system for purchases.
+- Add Authorization and online payment  system for purchases.
 
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/binodbhusal/motorhub_backend/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

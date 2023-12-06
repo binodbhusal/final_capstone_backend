@@ -5,7 +5,7 @@ user2 = User.create(name: 'User 2', role:'admin',email:'bb@gmail.com', password:
 # Seed data for StoreLocation table
 location1 = StoreLocation.create(city_name: 'Lisbon')
 location2 = StoreLocation.create(city_name: 'Kathmandu')
-
+begin
   # Seed data for Motor table
 motor1 = Motor.create(
   user_id: user1.id,
@@ -81,5 +81,7 @@ motor5 = Motor.create(
   purchase_fee: 766.33,
   finance_fee: 233.97,
   total_price: 2298.99,
- 
 )
+rescue StandardError => e
+  puts "Error occurred while seeding: #{e.message}"
+end

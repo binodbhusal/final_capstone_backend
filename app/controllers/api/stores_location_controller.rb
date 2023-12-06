@@ -18,12 +18,16 @@ class Api::StoresLocationController < ApplicationController
 
   # POST /api/stores_location
   def create
-    @location = StoreLocation.new(location_params)
-
-    if @location.save
-      render json: @location, status: :created
+    # @location = StoreLocation.new(location_params)
+    @location = StoreLocation.find_or_initialize_by(city_name: location_params[:city_name])
+    if @location.new_record?
+      if @location.save
+        render json: @location, status: :created
+      else
+        render json: @location.errors, status: :unprocessable_entity
+      end
     else
-      render json: @location.errors, status: :unprocessable_entity
+      render json: { message: 'Store Location already exists', data: @location }, status: :ok
     end
   end
 

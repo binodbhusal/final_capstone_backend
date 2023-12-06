@@ -25,18 +25,17 @@ class Api::ReservationsController < ApplicationController
   # POST /api/reservations
   def create
     # Find the user by user_id
-    @user = User.find_by(id: params[:user_id])
 
     # Find the motor by motor_id
     @motor = Motor.find_by(id: reservation_params[:motor_id])
 
-    if @user.nil? || @motor.nil?
+    if @motor.nil?
       render json: { error: 'User or motor not found' }, status: :unprocessable_entity
       return
     end
 
     # Build a new reservation with user, motor, and other parameters from reservation_params
-    @reservation = @user.reservations.new(reservation_params)
+    @reservation = current_user.reservations.new(reservation_params)
 
     if @reservation.save
       render json: @reservation, include: { motor: { only: [:id] } }, status: :created
@@ -66,6 +65,6 @@ class Api::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:motor_id, :reserve_date, :city_name)
+    params.require(:reservation).permit(:user_id, :motor_id, :reserve_date, :city_name)
   end
 end

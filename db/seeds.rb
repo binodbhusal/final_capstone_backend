@@ -1,12 +1,12 @@
 # Seed data for User table
-user1 = User.create(name: 'User 1',role:'admin' )
-user2 = User.create(name: 'User 2', role:'admin')
+user1 = User.create(name: 'User 1',role:'general', email:'motor@testmail.com', password:123456)
+user2 = User.create(name: 'User 2', role:'admin',email:'bb@gmail.com', password:123456)
 
 # Seed data for StoreLocation table
 location1 = StoreLocation.create(city_name: 'Lisbon')
 location2 = StoreLocation.create(city_name: 'Kathmandu')
 
-# Seed data for Motor table
+  # Seed data for Motor table
 motor1 = Motor.create(
   user_id: user1.id,
   location_id: location1.id,
@@ -83,4 +83,3 @@ motor5 = Motor.create(
   total_price: 2298.99,
  
 )
-

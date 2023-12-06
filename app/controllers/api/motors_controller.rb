@@ -3,14 +3,12 @@ class Api::MotorsController < ApplicationController
 
   # GET /motors
   def index
-    begin
     @motors = Motor.all
     @motors = @motors.where(brand_name: params[:brand_name]) if params[:brand_name].present?
     @motors = @motors.paginate(page: params[:page], per_page: params[:per_page] || 10)
     render json: @motors
   rescue StandardError => e
     render json: { error: e.message }, status: :unprocessable_entity
-  end
   end
 
   # GET /motors/1

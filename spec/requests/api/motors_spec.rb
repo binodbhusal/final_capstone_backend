@@ -3,9 +3,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Motors', type: :request do
   let(:user) { create(:user) }
-  before do
-    sign_in user
-  end
+
   path '/api/motors' do
     before(:all) do
       @user = create(:user) # Create a user using the factory
@@ -60,6 +58,9 @@ RSpec.describe 'API Motors', type: :request do
             total_price: 10.0
           }
         end
+        before do
+          sign_in user
+        end
         run_test! do
           expect(response).to have_http_status(:created)
         end
@@ -78,7 +79,9 @@ RSpec.describe 'API Motors', type: :request do
 
         response '204', 'Motor deleted - Successful' do
           let(:id) { @motor.id }
-
+          before do
+            sign_in user
+          end
           run_test! do
             expect(response).to have_http_status(:no_content)
           end
@@ -86,7 +89,9 @@ RSpec.describe 'API Motors', type: :request do
 
         response '404', 'Motor not found' do
           let(:id) { '9999' } # Assuming 999 is an invalid motor ID
-
+          before do
+            sign_in user
+          end
           run_test! do
             expect(response).to have_http_status(:not_found)
           end

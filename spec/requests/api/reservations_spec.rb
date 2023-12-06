@@ -6,11 +6,9 @@ RSpec.describe 'API Reservations', type: :request do
     sign_in user
   end
   before(:each) do
-    @user1 = create(:user)
-    @user2 = create(:user)
-    @motor1 = create(:motor, user: @user1)
-    @motor2 = create(:motor, user: @user2)
-    @reservation1 = create(:reservation, user: @user1, motor: @motor1)
+    @motor1 = create(:motor, user:)
+    @motor2 = create(:motor, user:)
+    @reservation1 = create(:reservation, user:, motor: @motor1)
   end
 
   path '/api/users/{user_id}/reservations' do
@@ -20,7 +18,7 @@ RSpec.describe 'API Reservations', type: :request do
       parameter name: :user_id, in: :path, type: :integer, required: true
 
       response '200', 'list of reservations' do
-        let(:user_id) { @user1.id }
+        let(:user_id) { user.id }
 
         run_test! do
           expect(response).to have_http_status(:ok)
@@ -28,7 +26,7 @@ RSpec.describe 'API Reservations', type: :request do
           body = JSON.parse(response.body)
           expect(body).to be_an(Array)
           expect(body.length).to eq(1) # User1 has one reservation
-          expect(body[0]['user_id']).to eq(@user1.id)
+          expect(body[0]['user_id']).to eq(user.id)
           reservation_ids = body.map { |reservation| reservation['id'] }
           expect(reservation_ids).to include(@reservation1.id)
         end
@@ -36,7 +34,7 @@ RSpec.describe 'API Reservations', type: :request do
     end
 
     post 'Creates a reservation' do
-      let(:user_id) { @user2.id }
+      let(:user_id) { user.id }
       let(:motor_id) { @motor2.id }
 
       tags 'Reservations'
@@ -54,7 +52,7 @@ RSpec.describe 'API Reservations', type: :request do
 
       response '201', 'reservation created' do
         let(:reservation_attributes) do
-          { motor_id:, reserve_date: '2022-10-20', city_name: 'Lisbon' }
+          { motor_id: @motor2.id, reserve_date: '2022-10-20', city_name: 'Lisbon' }
         end
         let(:reservation) do
           {
@@ -63,16 +61,15 @@ RSpec.describe 'API Reservations', type: :request do
         end
         before do
           # Ensure that the associated user exists
-          @user2 ||= create(:user, id: user_id)
 
           # Ensure that the associated motor exists
-          @motor2 ||= create(:motor, id: motor_id, user: @user2)
+          @motor2 ||= create(:motor, id: motor_id, user:)
         end
 
         run_test! do
           expect(response).to have_http_status(:created)
           body = JSON.parse(response.body)
-          expect(body['user_id']).to eq(@user2.id)
+          expect(body['user_id']).to eq(user.id)
           expect(body['motor']['id']).to eq(@motor2.id)
         end
       end

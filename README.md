@@ -45,10 +45,10 @@ The Motorhub - Online Motor Reservation System is a web application designed to 
 </div>
 
 #### Link to [Frontend](https://github.com/binodbhusal/motorhub_frontend.git)
-#### Link to [API Documentation](https://motorhubbackend-production.up.railway.app/api-docs/index.html)
+#### Link to [API Documentation](https://motorhubbackend.up.railway.app/api-docs/index.html)
 
 ### API URL 
-You can use this URL address to consump data from our API using [localy](localhost:3000/) or using the URL provided by railway [https://motorhubbackend-production.up.railway.app](https://motorhubbackend-production.up.railway.app)
+You can use this URL address to consump data from our API using [localy](localhost:3000/) or using the URL provided by railway [https://motorhubbackend.up.railway.app](https://motorhubbackend.up.railway.app)
 
 ## 🛠 Built With <a name="built-with"></a>
 
